@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: stg_flights
+    description: "Staging layer for flights data"
+    columns:
+      - name: flight_id
+        description: "Unique identifier for each flight"
+        tests:
+          - not_null
+          - unique
+      - name: origin_airport
+        description: "Origin airport code"
+        tests:
+          - not_null
+      - name: destination_airport
+        description: "Destination airport code"
+        tests:
+          - not_null
+      - name: status
+        description: "Flight status"
+        tests:
+          - accepted_values:
+              values: ['On Time', 'Delayed', 'Cancelled']
